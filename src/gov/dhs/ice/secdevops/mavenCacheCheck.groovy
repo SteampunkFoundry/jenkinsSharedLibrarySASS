@@ -1,3 +1,5 @@
+package gov.dhs.ice.secdevops
+
 class SharedLib implements Serializable {
 
     private final def _ // the member variable that contains the jenkinsFileScript
