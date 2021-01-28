@@ -1,4 +1,4 @@
-@Library('jenkinsSharedLibrarySASS') _
+@Library('jenkinsSharedLibrarySASS@feature/initial') _
 def label = "ImageBuildPod-${UUID.randomUUID().toString()}"
 
 podTemplate(label: label,
