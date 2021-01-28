@@ -1,4 +1,4 @@
-@Library('jenkinsSharedLibrarySASS@feature/initial') _
+@Library('jenkinsSharedLibrarySASS@feature/initial') import gov.dhs.ice.secdevops.sharedUtility
 def label = "ImageBuildPod-${UUID.randomUUID().toString()}"
 
 podTemplate(label: label,
