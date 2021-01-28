@@ -1,3 +1,4 @@
+@Library('jenkinsSharedLibrarySASS') _
 def label = "ImageBuildPod-${UUID.randomUUID().toString()}"
 
 podTemplate(label: label,
@@ -8,7 +9,8 @@ podTemplate(label: label,
         ],
          nodeSelector: 'kubernetes.io/arch=amd64')
 {
+    def utils = new sharedUtility(this)
     node(label) {
-
+       utils.tester("Print me for testing purposes")
     }
 }

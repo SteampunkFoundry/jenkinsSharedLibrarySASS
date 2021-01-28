@@ -1,18 +1,16 @@
+package gov.dhs.ice.secdevops
+
 class sharedUtility implements Serializable {
 
     private final def _ // the member variable that contains the jenkinsFileScript
+    def steps
 
-
-    sharedUtility(def jenkinsFileScript) {
-        _ = jenkinsFileScript
+    sharedUtility(steps) {
+        this.steps = steps
         this.buildTagName = _.env.BUILD_TAG.replaceAll(' ','-')
     }
 
-
-
-    sharedUtility tester() {
-        _.echo "This is a debug statement"
+    def tester(args) {
+        steps.echo "This is a debug statement: ${args}"
     }
-
-
 }
