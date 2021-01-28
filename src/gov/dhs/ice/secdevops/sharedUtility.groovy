@@ -7,7 +7,6 @@ class sharedUtility implements Serializable {
 
     sharedUtility(steps) {
         this.steps = steps
-        this.buildTagName = this.steps.env.BUILD_TAG.replaceAll(' ','-')
     }
 
     def tester(args) {
