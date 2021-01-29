@@ -9,7 +9,7 @@ class sharedUtility implements Serializable {
         this.steps = steps
     }
 
-    def tester(args) {
-        steps.echo "This is a debug statement: ${args}"
+    def tester(arg) {
+        steps.echo "This is a debug statement: ${arg}"
     }
 }
