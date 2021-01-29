@@ -44,7 +44,7 @@ class mavenUtility implements Serializable {
 
                         steps.echo "I am checking for a maven cache for ${branch} in ${zone}"
                         // Create a pvc base on the AZ
-/*                        def claim = steps.readYaml text:"""
+                        def claim = steps.readYaml text:"""
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -64,7 +64,7 @@ spec:
                         steps.writeYaml file: 'dynamicclaim.yaml', data: claim
                         steps.sh 'kubectl apply -f dynamicclaim.yaml'
 
- */
+
                         steps.echo "I'm in the Shared Lib"
                         return pvc
                     }
