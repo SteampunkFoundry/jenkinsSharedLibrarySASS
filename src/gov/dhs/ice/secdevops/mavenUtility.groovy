@@ -65,6 +65,7 @@ spec:
                         steps.sh 'kubectl apply -f dynamicclaim.yaml'
 
  */
+                        steps.echo "I'm in the Shared Lib"
                         return ${pvc}
                     }
                 }
