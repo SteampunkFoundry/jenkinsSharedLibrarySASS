@@ -4,9 +4,6 @@ class mavenUtility implements Serializable {
 
     private final def _ // the member variable that contains the jenkinsFileScript
     def steps
-    def containers = [
-            containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl', ttyEnabled: true, command: '/bin/cat')
-    ]
 
     mavenUtility(steps) {
         this.steps = steps
@@ -26,7 +23,7 @@ class mavenUtility implements Serializable {
         podTemplate(
                 label: kubelabel,
                 containers: [
-                        ${containers}
+                        containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl', ttyEnabled: true, command: '/bin/cat')
                 ],
                 serviceAccount: 'jenkins',
                 nodeSelector: 'role=workers'
