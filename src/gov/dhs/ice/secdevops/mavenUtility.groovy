@@ -66,7 +66,7 @@ spec:
 
  */
                         steps.echo "I'm in the Shared Lib"
-                        return steps.${pvc}
+                        return pvc
                     }
                 }
             }
