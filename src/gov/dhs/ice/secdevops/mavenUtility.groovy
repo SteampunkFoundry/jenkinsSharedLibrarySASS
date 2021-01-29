@@ -20,18 +20,18 @@ class mavenUtility implements Serializable {
         def pvc                    // Name of the PVC for this branch
         def branch                 // Branch name
         def namespace = "cistack"  // Namespace pods execute in
-        podTemplate(
+        steps.podTemplate(
                 label: kubelabel,
                 containers: [
-                        containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl', ttyEnabled: true, command: '/bin/cat')
+                        steps.containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl', ttyEnabled: true, command: '/bin/cat')
                 ],
                 serviceAccount: 'jenkins',
                 nodeSelector: 'role=workers'
         ) {
-            node(kubelabel) {
-                stage('cache check') {
+            steps.node(kubelabel) {
+                steps.stage('cache check') {
 
-                    container('kubectl'){
+                    steps.container('kubectl'){
                         //Get the node so we can get the availability zone
                         kubenode=steps.sh returnStdout: true, script: "kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name -n cistack | grep ${kubelabel} | sed -e 's/  .*//g'"
                         kubenode=kubenode.trim()
