@@ -34,8 +34,8 @@ class mavenUtility implements Serializable {
                         //Get the node so we can get the availability zone
                         kubenode=steps.sh returnStdout: true, script: "kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name -n cistack | grep ${kubelabel} | sed -e 's/  .*//g'"
                         kubenode=kubenode.trim()
-                        //zone="us-east-1a"
-                        zone=steps.sh returnStdout: true, script: "kubectl describe node \"${kubenode}\" | grep ProviderID | sed -e 's/.*aws:\\/\\/\\///g' | sed -e 's/\\/.*//g'"
+                        zone="us-east-1a"
+                        //zone=steps.sh returnStdout: true, script: "kubectl describe node \"${kubenode}\" | grep ProviderID | sed -e 's/.*aws:\\/\\/\\///g' | sed -e 's/\\/.*//g'"
                         zone=zone.trim()
                         branch=steps.env.BRANCH_NAME
                         // Sanitize the branch name so it can be made part of the pvc
