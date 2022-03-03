@@ -26,7 +26,7 @@ class mavenUtility implements Serializable {
                         steps.containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl', ttyEnabled: true, command: '/bin/cat')
                 ],
                 serviceAccount: 'jenkins',
-                nodeSelector: 'role=workers'
+                nodeSelector: 'jenkins=agent'
         ) {
             steps.node(kubelabel) {
                 steps.stage('cache check') {
